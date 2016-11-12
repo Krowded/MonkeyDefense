@@ -16,23 +16,23 @@ public class CreateArrows : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Debug.Log(Time.time + " " + lastTick + "" + shootDelay);
         if (Time.time > lastTick + shootDelay)
         {
-            for (int i = 0; i < gameObject.transform.parent.childCount; i++)
+            for (int indexia = 0; indexia < gameObject.transform.parent.childCount; indexia++)
             {
-                Transform enemyTransform = gameObject.transform.parent.GetChild(i);
+                Transform enemyTransform = gameObject.transform.parent.GetChild(indexia);
                 if (Vector3.Distance(enemyTransform.position, gameObject.transform.position) < Range)
                 {
                     Shoot(enemyTransform);
+                    //break;
                 }
             }
+            lastTick = Time.time;
         }
-        lastTick = Time.time;
     }
     void Shoot(Transform enemyTransform)
     {
-        Vector3 direction = (enemyTransform.position - gameObject.transform.position);
+        //Vector3 direction = (enemyTransform.position - gameObject.transform.position);
         GameObject arrow = Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(100, 0, 0)) as GameObject;
         arrow.GetComponent<ArrowMovement>().enemyTransform = enemyTransform;
     }
