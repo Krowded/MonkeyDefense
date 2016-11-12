@@ -6,6 +6,7 @@ public class Woodcutter : MonoBehaviour {
     public float Range;
     public float cutDelay;
     private float lastTick;
+	public GameObject TreeList;
 
 	// Use this for initialization
 	void Start () {
@@ -16,9 +17,10 @@ public class Woodcutter : MonoBehaviour {
 	void Update () {
         if (Time.time > lastTick + cutDelay)
         {
-            for (int i = 0; i < gameObject.transform.parent.childCount; i++)
+            for (int i = 0; i < TreeList.transform.childCount; i++)
             {
-                Transform treeTransform = gameObject.transform.parent.GetChild(i);
+				//Transform treeTransform = gameObject.transform.parent.GetChild(i);
+				Transform treeTransform = TreeList.transform.GetChild(i).transform;
                 if (Vector3.Distance(treeTransform.position, gameObject.transform.position) < Range)
                 {
                     Cutting(treeTransform);
@@ -28,5 +30,9 @@ public class Woodcutter : MonoBehaviour {
         }
     }
     void Cutting(Transform treeTransform)
-    { }
+    {
+		treeTransform.gameObject.GetComponent<ClickableTreeScript>().CutDownTree();
+		Debug.Log("Tree cut down!");
+		//TODO: Add lumber to player
+	}
 }

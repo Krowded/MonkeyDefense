@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using AggregatGames.AI.Pathfinding;
 
 public class NavigationScript : MonoBehaviour {
 
 	public Transform target;
 	private NavMeshAgent agent;
 
-
-	public float speed = 0.5f;
-	public float reachedKnot = 2f;
+	public float reachedGoal;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +18,13 @@ public class NavigationScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
+		if(Vector3.Distance(agent.destination, transform.position) < reachedGoal)
+		{
+			HealthComponent h = target.gameObject.GetComponent<HealthComponent>();
+			if (h)
+				h.Damage(1);
 
+			Destroy(gameObject);
+		}
 	}
 }

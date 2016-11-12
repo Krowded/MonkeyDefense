@@ -8,8 +8,10 @@ public class HealthComponent : MonoBehaviour{
     public void Damage(int damage)
     {
         life -= damage;
-        if (life <= 0)
-            SendMessage("OnDestroyed");
+
+		//TODO: deal with no life
+		//if (life <= 0)
+          //  SendMessage("OnDestroyed");
     }
 
     // Use this for initialization
