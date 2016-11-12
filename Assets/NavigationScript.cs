@@ -20,9 +20,14 @@ public class NavigationScript : MonoBehaviour {
 	void Update() {
 		if(Vector3.Distance(agent.destination, transform.position) < reachedGoal)
 		{
-			HealthComponent h = target.gameObject.GetComponent<HealthComponent>();
+			HealthComponent h = target.gameObject.transform.parent.GetComponent<HealthComponent>();
 			if (h)
+			{
 				h.Damage(1);
+			} else
+			{
+				Debug.Log("No HealthComponent in " + target.gameObject.transform.parent.name);
+			}
 
 			Destroy(gameObject);
 		}

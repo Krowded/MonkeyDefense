@@ -24,6 +24,7 @@ public class Woodcutter : MonoBehaviour {
                 if (Vector3.Distance(treeTransform.position, gameObject.transform.position) < Range)
                 {
                     Cutting(treeTransform);
+					break;
                 }
             }
             lastTick = Time.time;

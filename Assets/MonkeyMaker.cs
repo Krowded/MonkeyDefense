@@ -28,5 +28,6 @@ public class MonkeyMaker : MonoBehaviour {
 		pos.y = 0;
 		GameObject monkey = Instantiate(monkeyType, pos, Quaternion.identity) as GameObject;
 		monkey.GetComponent<NavigationScript>().target = monkeyTarget.transform;
+		monkey.transform.SetParent(gameObject.transform.parent);
 	}
 }

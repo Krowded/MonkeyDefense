@@ -7,7 +7,7 @@ public class LoadPath : MonoBehaviour {
 
 	public int treesPerTile;
 	private List<Transform> treeList;
-	private int worldScale = 50;
+	private int worldScale;
 
 	// Use this for initialization
 	void Start () {
@@ -22,15 +22,23 @@ public class LoadPath : MonoBehaviour {
 		int xcounter = 0;
 		int ycounter = 0;
 		int treeCounter = 0;
+		bool firstLine = true;
 		foreach(string line in text)
 		{
+			if(firstLine)
+			{
+				worldScale = Int32.Parse(line);
+				firstLine = false;
+				continue;
+			}
+
 			xcounter = 0;
 			foreach(char c in line)
 			{
 				switch(c) {
 					case ' ':
 						//path
-
+						//Do nothing
 					break;
 					case '#':
 						//trees
@@ -44,12 +52,14 @@ public class LoadPath : MonoBehaviour {
 						break;
 					case 'S':
 						//monkeytower
-						transform.FindChild("MonkeyTower").transform.position = worldScale * (new Vector3(xcounter, 0, ycounter));
+						Transform monkeyTowerTransform = transform.FindChild("MonkeyTower").transform;
+						monkeyTowerTransform.position = new Vector3(worldScale*xcounter, monkeyTowerTransform.position.y, worldScale*ycounter);
 						break;
 					case 'E':
 						//tower
-						transform.FindChild("BaseTower").transform.position = worldScale * (new Vector3(xcounter, 0, ycounter));
-						transform.FindChild("DestinationPoint").transform.position = worldScale * (new Vector3(xcounter, 0, ycounter));
+						Transform baseTowerTransform = transform.FindChild("BaseTower").transform;
+						baseTowerTransform.position = new Vector3(worldScale * xcounter, baseTowerTransform.position.y, worldScale * ycounter);
+						transform.FindChild("BaseTower").FindChild("DestinationPoint").transform.position = new Vector3(worldScale * xcounter, 0, worldScale * ycounter);
 					break;
 				}
 
