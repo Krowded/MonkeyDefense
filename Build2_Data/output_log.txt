@@ -1,0 +1,50 @@
+Initialize engine version: 5.4.2f2 (b7e030c65c9b)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7500G (ID=0x990a)
+    Vendor:   ATI
+    VRAM:     1265 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.225 seconds
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Oscar\Documents\GitHub\MonkeyDefense\Build2_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.855833 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2284 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 18.748848 ms
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 7463.
+Total: 7.326120 ms (FindLiveObjects: 0.825086 ms CreateObjectMapping: 0.942816 ms MarkObjects: 3.403907 ms  DeleteObjects: 2.146005 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 11.043648 ms
+
+Unloading 3625 unused Assets to reduce memory usage. Loaded Objects now: 251.
+Total: 6.985143 ms (FindLiveObjects: 1.240315 ms CreateObjectMapping: 0.532959 ms MarkObjects: 0.582298 ms  DeleteObjects: 4.627614 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.375632 ms
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 7464.
+Total: 7.368131 ms (FindLiveObjects: 0.794310 ms CreateObjectMapping: 0.793821 ms MarkObjects: 3.797154 ms  DeleteObjects: 1.981379 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.144453 ms
+
+Unloading 3625 unused Assets to reduce memory usage. Loaded Objects now: 251.
+Total: 6.551838 ms (FindLiveObjects: 0.378103 ms CreateObjectMapping: 0.405948 ms MarkObjects: 0.395689 ms  DeleteObjects: 5.369654 ms)
+

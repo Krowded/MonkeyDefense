@@ -9,7 +9,7 @@ public class LoadOnClick : MonoBehaviour
     public void LoadScene(string level)
     {
         //Map, Map2 Map3
-        SceneManager.LoadScene("testscene");
+        SceneManager.LoadScene("level1");
 
     }
 }

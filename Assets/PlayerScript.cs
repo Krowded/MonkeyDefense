@@ -18,7 +18,18 @@ public class PlayerScript : MonoBehaviour {
 		HandleKeyboardInput();	
 	}
 
-	void HandleKeyboardInput()
+    public void SelectLumberjack()
+    {
+        currentlySelected = TowerType.Lumberjack;
+    }
+
+    public void SelectBananatower()
+    {
+        currentlySelected = TowerType.BananaTower;
+    }
+
+
+    void HandleKeyboardInput()
 	{
 		if(Input.GetKeyDown("1"))
 		{
