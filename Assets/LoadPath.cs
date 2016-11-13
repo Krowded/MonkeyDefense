@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class LoadPath : MonoBehaviour {
 
 	public int treesPerTile;
@@ -10,8 +11,12 @@ public class LoadPath : MonoBehaviour {
 	private int worldScale;
 	public string Level = "Map.txt";
 
+	private AudioSource sound;
+
 	// Use this for initialization
 	void Start () {
+		sound = GetComponent<AudioSource>();
+
 		treeList = new List<Transform>();
 		Transform TreeListObject = gameObject.transform.FindChild("TreeList");
 		for (int i = 0; i < TreeListObject.childCount; i++)
@@ -69,5 +74,6 @@ public class LoadPath : MonoBehaviour {
 			ycounter++;
 		}
 
+		sound.Play();
 	}	
 }

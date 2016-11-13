@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class Woodcutter : MonoBehaviour {
 
     public float Range;
@@ -9,8 +10,11 @@ public class Woodcutter : MonoBehaviour {
 	public GameObject TreeList;
 	public PlayerScript player;
 
+	private AudioSource sound;
+
 	// Use this for initialization
 	void Start () {
+		sound = GetComponent<AudioSource>();
         lastTick = Time.time;
 	}
 	
@@ -35,5 +39,6 @@ public class Woodcutter : MonoBehaviour {
     {
 		int lumberReward = treeTransform.gameObject.GetComponent<ClickableTreeScript>().CutDownTree();
 		player.CurrentLumber += lumberReward;
-	}
+		sound.Play();
+}
 }

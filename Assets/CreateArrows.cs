@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class CreateArrows : MonoBehaviour {
 
     public float Range;
@@ -9,10 +10,12 @@ public class CreateArrows : MonoBehaviour {
 	public GameObject enemyList;
     private float lastTick;
 
+	private AudioSource sound;
+
 	// Use this for initialization
 	void Start () {
+		sound = GetComponent<AudioSource>();
         lastTick = Time.time;
-	
 	}
 
     // Update is called once per frame
@@ -36,5 +39,6 @@ public class CreateArrows : MonoBehaviour {
 		Vector3 spawnPosition = gameObject.transform.position;
         GameObject arrow = Instantiate(Projectile, spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         arrow.GetComponent<ArrowMovement>().enemyTransform = enemyTransform;
+		sound.Play();
     }
 }
