@@ -60,7 +60,7 @@ public class LoadPath : MonoBehaviour {
 						//tower
 						Transform baseTowerTransform = transform.FindChild("BaseTower").transform;
 						baseTowerTransform.position = new Vector3(worldScale * xcounter, baseTowerTransform.position.y, worldScale * ycounter);
-						transform.FindChild("BaseTower").FindChild("DestinationPoint").transform.position = new Vector3(worldScale * xcounter, 0, worldScale * ycounter);
+						baseTowerTransform.FindChild("DestinationPoint").transform.position = new Vector3(worldScale * xcounter, 0, worldScale * ycounter);
 					break;
 				}
 

@@ -15,7 +15,7 @@ public class DeathScript : MonoBehaviour {
 
 	void OnDestroyed()
 	{
-		SendMessage("OnLoss");
+		SendMessageUpwards("OnLoss");
 		Destroy(gameObject.transform.root.gameObject);
 	}
 }

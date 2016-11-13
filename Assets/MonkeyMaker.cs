@@ -24,8 +24,7 @@ public class MonkeyMaker : MonoBehaviour {
 		{
 			if (enemyList.transform.childCount == 0)
 			{
-				SendMessage("OnWin");
-				Debug.Log("Diflvl: " + DifficultyLevel + " Maxlvl: " + MaxLevel);
+				SendMessageUpwards("OnWin");
 			}
 
 			return;
