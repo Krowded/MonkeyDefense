@@ -34,7 +34,6 @@ public class Woodcutter : MonoBehaviour {
     void Cutting(Transform treeTransform)
     {
 		int lumberReward = treeTransform.gameObject.GetComponent<ClickableTreeScript>().CutDownTree();
-		Debug.Log("Tree cut down!");
 		player.CurrentLumber += lumberReward;
 	}
 }

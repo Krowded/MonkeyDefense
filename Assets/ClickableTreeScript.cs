@@ -28,8 +28,6 @@ public class ClickableTreeScript : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Debug.Log(player.currentlySelected);
-
 		switch (player.currentlySelected)
 		{
 			case PlayerScript.TowerType.Nothing:
