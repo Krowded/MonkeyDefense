@@ -10,5 +10,6 @@ public class LoadOnClick : MonoBehaviour
     {
         //Map, Map2 Map3
         SceneManager.LoadScene("testscene");
+
     }
 }
