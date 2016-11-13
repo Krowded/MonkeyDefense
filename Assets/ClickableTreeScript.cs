@@ -7,6 +7,7 @@ public class ClickableTreeScript : MonoBehaviour {
 	public GameObject BananaTower;
 	public GameObject Player;
 	private PlayerScript player;
+	public int Lumber = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -18,10 +19,11 @@ public class ClickableTreeScript : MonoBehaviour {
 		player = Player.GetComponent<PlayerScript>();
 	}
 
-	public void CutDownTree()
+	public int CutDownTree()
 	{
 		Destroy(gameObject);
 		//Replace with stump?
+		return Lumber;
 	}
 
 	void OnMouseDown()
@@ -39,7 +41,10 @@ public class ClickableTreeScript : MonoBehaviour {
 					//SendMessage("Not enough lumber");
 
 					GameObject lumberjack = Instantiate(TimerjackTower, transform.position, Quaternion.identity) as GameObject;
-					lumberjack.GetComponent<Woodcutter>().TreeList = gameObject.transform.parent.gameObject;
+					Woodcutter woodcutterScript = lumberjack.GetComponent<Woodcutter>();
+					woodcutterScript.TreeList= gameObject.transform.parent.gameObject;
+					woodcutterScript.player = player;
+
 					lumberjack.transform.SetParent(transform.parent.parent);
 					Destroy(gameObject);
 				}
@@ -49,8 +54,10 @@ public class ClickableTreeScript : MonoBehaviour {
 				{
 					player.CurrentLumber -= 3;
 					//SendMessage("Not enough lumber");
-
-					GameObject banana = Instantiate(BananaTower, transform.position, Quaternion.identity) as GameObject;
+					Vector3 spawnPosition = transform.position;
+					spawnPosition.y += BananaTower.transform.position.y;
+					GameObject banana = Instantiate(BananaTower, spawnPosition, Quaternion.identity) as GameObject;
+					banana.GetComponent<CreateArrows>().enemyList = gameObject.transform.parent.parent.FindChild("EnemyList").gameObject;
 					banana.transform.SetParent(transform.parent.parent);
 					Destroy(gameObject);
 				}
