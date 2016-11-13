@@ -6,6 +6,7 @@ public class NavigationScript : MonoBehaviour {
 
 	public Transform target;
 	public int DamagePotential = 1;
+	public float Speed = 1;
 	private NavMeshAgent agent;
 
 	public float reachedGoal;
@@ -14,6 +15,7 @@ public class NavigationScript : MonoBehaviour {
 	void Start () {
 		agent = gameObject.GetComponent<NavMeshAgent>();
 		agent.SetDestination(target.position);
+		agent.speed = Speed * 50;
 	}
 
 

@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class CreateArrows : MonoBehaviour {
 
+	public PlayerScript player;
     public float Range;
     public float shootDelay;
     public GameObject Projectile;
@@ -38,7 +39,8 @@ public class CreateArrows : MonoBehaviour {
     {
 		Vector3 spawnPosition = gameObject.transform.position;
         GameObject arrow = Instantiate(Projectile, spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
-        arrow.GetComponent<ArrowMovement>().enemyTransform = enemyTransform;
+		ArrowMovement arrowScript = arrow.GetComponent<ArrowMovement>();
+		arrowScript.enemyTransform = enemyTransform;
 		sound.Play();
     }
 }

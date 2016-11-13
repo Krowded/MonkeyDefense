@@ -8,10 +8,13 @@ public class MonkeyMaker : MonoBehaviour {
 	public GameObject monkeyType;
 	public GameObject monkeyTarget;
 	public GameObject enemyList;
+	public PlayerScript player;
 
 	public int MaxLevel = 3;
 	public int DifficultyLevel = 1;
 	public int MonkeyCounter = 0;
+	public int MonkeysPerWave = 30;
+	public int secondsBetweenWaves = 6;
 
 	// Use this for initialization
 	void Start () {
@@ -38,10 +41,10 @@ public class MonkeyMaker : MonoBehaviour {
 			lastTick = Time.time;
 		}
 
-		if(MonkeyCounter > 30) //One wave of 30 monkeys
+		if(MonkeyCounter > MonkeysPerWave)
 		{
 			MonkeyCounter = 0;
-			lastTick = Time.time + 5;
+			lastTick = Time.time + secondsBetweenWaves;
 			DifficultyLevel++;
 		}
 	}
@@ -53,24 +56,35 @@ public class MonkeyMaker : MonoBehaviour {
 		GameObject monkey = Instantiate(monkeyType, pos, Quaternion.identity) as GameObject;
 		NavigationScript monkeyMovementScript = monkey.GetComponent<NavigationScript>();
 		monkeyMovementScript.target = monkeyTarget.transform;
+
+		MonkeyDeathScript monkeyDeathScript = monkey.GetComponent<MonkeyDeathScript>();
+		monkeyDeathScript.player = player;
+
 		monkey.transform.SetParent(enemyList.transform);
 
 		HealthComponent h;
 		switch(DifficultyLevel)
 		{
 			case 1:
+				h = monkey.GetComponent<HealthComponent>();
+				h.life = 10;
+				monkeyMovementScript.DamagePotential = 1;
+				monkeyMovementScript.Speed = 1f;
+				interval = 2.0f;
 				break;
 			case 2:
 				h = monkey.GetComponent<HealthComponent>();
-				h.life = 20;
+				h.life = 10;
 				monkeyMovementScript.DamagePotential = 2;
-				interval = 1f;
+				monkeyMovementScript.Speed = 1.25f;
+				interval = 1.0f;
 				break;
 			case 3:
 				h = monkey.GetComponent<HealthComponent>();
-				h.life = 20;
+				h.life = 10;
 				interval = 0.5f;
-				monkeyMovementScript.DamagePotential = 2;
+				monkeyMovementScript.DamagePotential = 3;
+				monkeyMovementScript.Speed = 1.5f;
 				break;
 			default:
 				Debug.Log("Impossible level!");

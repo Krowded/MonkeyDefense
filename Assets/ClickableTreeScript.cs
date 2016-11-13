@@ -55,7 +55,9 @@ public class ClickableTreeScript : MonoBehaviour {
 					Vector3 spawnPosition = transform.position;
 					spawnPosition.y += BananaTower.transform.position.y;
 					GameObject banana = Instantiate(BananaTower, spawnPosition, Quaternion.identity) as GameObject;
-					banana.GetComponent<CreateArrows>().enemyList = gameObject.transform.parent.parent.FindChild("EnemyList").gameObject;
+					CreateArrows bananaTowerScript = banana.GetComponent<CreateArrows>();
+					bananaTowerScript.enemyList = gameObject.transform.parent.parent.FindChild("EnemyList").gameObject;
+					bananaTowerScript.player = player;
 					banana.transform.SetParent(transform.parent.parent);
 					Destroy(gameObject);
 				}

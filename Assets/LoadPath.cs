@@ -10,7 +10,6 @@ public class LoadPath : MonoBehaviour {
 	private List<Transform> treeList;
 	private int worldScale;
 	public string Level = "Map.txt";
-	private string Level2 = "Map2.txt";
 
 	private AudioSource sound;
 
@@ -27,12 +26,20 @@ public class LoadPath : MonoBehaviour {
 
 		//Fake levelselection
 		string levelFile;
-		int coinFlip = UnityEngine.Random.Range(1, 3);
-		if(coinFlip > 1)
+		int diceRoll = UnityEngine.Random.Range(1, 4);
+		switch(diceRoll)
 		{
-			levelFile = Level;
-		} else {
-			levelFile = Level2;
+			case 1:
+				levelFile = "Map.txt";
+				break;
+			case 2:
+				levelFile = "Map2.txt";
+				break;
+			case 3:
+				levelFile = "Map3.txt";
+				break;
+			default:
+				return;
 		}
 
 		List<string> text = new List<string>(System.IO.File.ReadAllLines(levelFile));

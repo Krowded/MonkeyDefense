@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour {
 	public TowerType currentlySelected = TowerType.Nothing;
 
 	public int CurrentLumber; // { get; set; }
+	private int NumberOfDeadMonkeys = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,13 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		HandleKeyboardInput();	
+	}
+
+	public void NotifyMonkeyKill()
+	{
+		NumberOfDeadMonkeys++;
+		if (NumberOfDeadMonkeys % 5 == 0)
+			CurrentLumber++;
 	}
 
     public void SelectLumberjack()
@@ -37,6 +45,10 @@ public class PlayerScript : MonoBehaviour {
 		} else if (Input.GetKeyDown("2"))
 		{
 			currentlySelected = TowerType.BananaTower;
+		}
+		else if(Input.GetKeyDown(KeyCode.Escape))
+		{
+			SendMessageUpwards("OnLoss");
 		}
 	}
 }

@@ -6,7 +6,6 @@ public class ArrowMovement : MonoBehaviour
 
     private Transform body;
 
-
     public float speed;
 	public float rotationSpeed;
     public Transform enemyTransform;
