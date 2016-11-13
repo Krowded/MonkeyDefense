@@ -8,6 +8,7 @@ public class LoadPath : MonoBehaviour {
 	public int treesPerTile;
 	private List<Transform> treeList;
 	private int worldScale;
+	public string Level = "Map.txt";
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class LoadPath : MonoBehaviour {
 			treeList.Add(TreeListObject.GetChild(i));
 		}
 
-		List<string> text = new List<string>(System.IO.File.ReadAllLines("Map.txt"));
+		List<string> text = new List<string>(System.IO.File.ReadAllLines(Level));
 		int xcounter = 0;
 		int ycounter = 0;
 		int treeCounter = 0;

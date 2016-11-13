@@ -34,8 +34,7 @@ public class CreateArrows : MonoBehaviour {
     void Shoot(Transform enemyTransform)
     {
 		Vector3 spawnPosition = gameObject.transform.position;
-		spawnPosition.y += 50;
-        GameObject arrow = Instantiate(Projectile, spawnPosition, Quaternion.Euler(100, 0, 0)) as GameObject;
+        GameObject arrow = Instantiate(Projectile, spawnPosition, Quaternion.Euler(0, 0, 0)) as GameObject;
         arrow.GetComponent<ArrowMovement>().enemyTransform = enemyTransform;
     }
 }

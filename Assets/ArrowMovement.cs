@@ -5,7 +5,10 @@ public class ArrowMovement : MonoBehaviour
 {
 
     private Transform body;
+
+
     public float speed;
+	public float rotationSpeed;
     public Transform enemyTransform;
     public float proximity;
     public int killPower;
@@ -30,7 +33,7 @@ public class ArrowMovement : MonoBehaviour
 
         body.position += direction.normalized * speed * Time.deltaTime;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+		rotation = Quaternion.Euler(0, rotationSpeed * Time.deltaTime, 0);
         transform.rotation = rotation * transform.rotation;
         if (direction.magnitude < proximity)
         {
