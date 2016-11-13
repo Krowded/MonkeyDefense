@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class LoadOnClick : MonoBehaviour
 {
-    void Start() {
-        Debug.Log("akbdkajdb");
-    }
-
-    void OnMouseDown()
+ 
+    public void LoadScene(string level)
     {
-        Debug.Log("Clicked");
+        //Map, Map2 Map3
         SceneManager.LoadScene("testscene");
     }
 }
