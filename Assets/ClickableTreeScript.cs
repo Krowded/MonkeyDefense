@@ -38,7 +38,7 @@ public class ClickableTreeScript : MonoBehaviour {
 					player.CurrentLumber -= 1;
 					//SendMessage("Not enough lumber");
 
-					GameObject lumberjack = Instantiate(TimerjackTower, transform.position, transform.rotation) as GameObject;
+					GameObject lumberjack = Instantiate(TimerjackTower, transform.position, Quaternion.identity) as GameObject;
 					lumberjack.GetComponent<Woodcutter>().TreeList = gameObject.transform.parent.gameObject;
 					lumberjack.transform.SetParent(transform.parent.parent);
 					Destroy(gameObject);
@@ -50,7 +50,7 @@ public class ClickableTreeScript : MonoBehaviour {
 					player.CurrentLumber -= 3;
 					//SendMessage("Not enough lumber");
 
-					GameObject banana = Instantiate(BananaTower, transform.position, transform.rotation) as GameObject;
+					GameObject banana = Instantiate(BananaTower, transform.position, Quaternion.identity) as GameObject;
 					banana.transform.SetParent(transform.parent.parent);
 					Destroy(gameObject);
 				}
