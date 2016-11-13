@@ -3,15 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class LoadPath : MonoBehaviour {
 
 	public int treesPerTile;
 	private List<Transform> treeList;
 	private int worldScale;
 	public string Level = "Map.txt";
+	private string Level2 = "Map2.txt";
+
+	private AudioSource sound;
 
 	// Use this for initialization
 	void Start () {
+		sound = GetComponent<AudioSource>();
+
 		treeList = new List<Transform>();
 		Transform TreeListObject = gameObject.transform.FindChild("TreeList");
 		for (int i = 0; i < TreeListObject.childCount; i++)
@@ -19,7 +25,17 @@ public class LoadPath : MonoBehaviour {
 			treeList.Add(TreeListObject.GetChild(i));
 		}
 
-		List<string> text = new List<string>(System.IO.File.ReadAllLines(Level));
+		//Fake levelselection
+		string levelFile;
+		int coinFlip = UnityEngine.Random.Range(1, 3);
+		if(coinFlip > 1)
+		{
+			levelFile = Level;
+		} else {
+			levelFile = Level2;
+		}
+
+		List<string> text = new List<string>(System.IO.File.ReadAllLines(levelFile));
 		int xcounter = 0;
 		int ycounter = 0;
 		int treeCounter = 0;
@@ -69,5 +85,6 @@ public class LoadPath : MonoBehaviour {
 			ycounter++;
 		}
 
+		sound.Play();
 	}	
 }
