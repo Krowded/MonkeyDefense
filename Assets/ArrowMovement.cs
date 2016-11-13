@@ -32,7 +32,6 @@ public class ArrowMovement : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
         transform.rotation = rotation * transform.rotation;
-        //Vector3.Slerp(body.forward, direction.normalized, 1);
         if (direction.magnitude < proximity)
         {
             HealthComponent enemyHealth = enemyTransform.gameObject.GetComponent<HealthComponent>();
