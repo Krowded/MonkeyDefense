@@ -10,6 +10,7 @@ public class LoadPath : MonoBehaviour {
 	private List<Transform> treeList;
 	private int worldScale;
 	public string Level = "Map.txt";
+	private string Level2 = "Map2.txt";
 
 	private AudioSource sound;
 
@@ -24,7 +25,17 @@ public class LoadPath : MonoBehaviour {
 			treeList.Add(TreeListObject.GetChild(i));
 		}
 
-		List<string> text = new List<string>(System.IO.File.ReadAllLines(Level));
+		//Fake levelselection
+		string levelFile;
+		int coinFlip = UnityEngine.Random.Range(1, 3);
+		if(coinFlip > 1)
+		{
+			levelFile = Level;
+		} else {
+			levelFile = Level2;
+		}
+
+		List<string> text = new List<string>(System.IO.File.ReadAllLines(levelFile));
 		int xcounter = 0;
 		int ycounter = 0;
 		int treeCounter = 0;
