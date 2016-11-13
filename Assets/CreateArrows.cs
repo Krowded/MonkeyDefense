@@ -6,6 +6,7 @@ public class CreateArrows : MonoBehaviour {
     public float Range;
     public float shootDelay;
     public GameObject Projectile;
+	public GameObject enemyList;
     private float lastTick;
 
 	// Use this for initialization
@@ -18,13 +19,13 @@ public class CreateArrows : MonoBehaviour {
     void Update() {
         if (Time.time > lastTick + shootDelay)
         {
-            for (int indexia = 0; indexia < gameObject.transform.parent.childCount; indexia++)
+            for (int i = 0; i < enemyList.transform.childCount; i++)
             {
-                Transform enemyTransform = gameObject.transform.parent.GetChild(indexia);
-                if (Vector3.Distance(enemyTransform.position, gameObject.transform.position) < Range)
+                Transform enemyTransform = enemyList.transform.GetChild(i);
+                if ( Vector3.Distance(enemyTransform.position, gameObject.transform.position) < Range)
                 {
                     Shoot(enemyTransform);
-                    //break;
+                    break;
                 }
             }
             lastTick = Time.time;
@@ -32,9 +33,9 @@ public class CreateArrows : MonoBehaviour {
     }
     void Shoot(Transform enemyTransform)
     {
-        //Vector3 direction = (enemyTransform.position - gameObject.transform.position);
-        GameObject arrow = Instantiate(Projectile, gameObject.transform.position, Quaternion.Euler(100, 0, 0)) as GameObject;
+		Vector3 spawnPosition = gameObject.transform.position;
+		spawnPosition.y += 50;
+        GameObject arrow = Instantiate(Projectile, spawnPosition, Quaternion.Euler(100, 0, 0)) as GameObject;
         arrow.GetComponent<ArrowMovement>().enemyTransform = enemyTransform;
     }
-    //Vector3.Angle(gameObject.transform.position, direction)
 }

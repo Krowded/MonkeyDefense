@@ -7,6 +7,7 @@ public class Woodcutter : MonoBehaviour {
     public float cutDelay;
     private float lastTick;
 	public GameObject TreeList;
+	public PlayerScript player;
 
 	// Use this for initialization
 	void Start () {
@@ -32,8 +33,8 @@ public class Woodcutter : MonoBehaviour {
     }
     void Cutting(Transform treeTransform)
     {
-		treeTransform.gameObject.GetComponent<ClickableTreeScript>().CutDownTree();
+		int lumberReward = treeTransform.gameObject.GetComponent<ClickableTreeScript>().CutDownTree();
 		Debug.Log("Tree cut down!");
-		//TODO: Add lumber to player
+		player.CurrentLumber += lumberReward;
 	}
 }

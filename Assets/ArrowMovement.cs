@@ -20,6 +20,12 @@ public class ArrowMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (!enemyTransform) //If target stops existing, destroy arrow and exit
+		{
+			Destroy(gameObject);
+			return;
+		}
+
         Vector3 direction = (enemyTransform.position - body.position);
 
         body.position += direction.normalized * speed * Time.deltaTime;

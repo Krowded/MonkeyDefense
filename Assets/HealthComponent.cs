@@ -9,9 +9,8 @@ public class HealthComponent : MonoBehaviour{
     {
         life -= damage;
 
-		//TODO: deal with no life
-		//if (life <= 0)
-          //  SendMessage("OnDestroyed");
+		if (life <= 0)
+			SendMessage("OnDestroyed");
     }
 
     // Use this for initialization
